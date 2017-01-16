@@ -1,0 +1,166 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Admin = "active";
+    ViewBag.tab1 = "tab1";
+}
+<style>
+    ul.tabs2 {
+        margin: 0;
+        padding: 0;
+        float: left;
+        list-style: none;
+        min-height: 45px;
+        width: 100%;
+        background: #00018c;
+    }
+
+    html ul.tabs2 li.active, html ul.tabs2 li.active a, html ul.tabs2 li.active a:hover {
+        color: #454545;
+        background-color: #f0f0f0;
+        height: 44px;
+    }
+
+    ul.tabs2 li a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        font-size: 14px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        padding: 0px 15px 0px 10px;
+        background-color: #00018c;
+        font-family: 'Open Sans' !important;
+        font-weight: normal;
+    }
+
+    ul.tabs2 li {
+        float: left;
+        padding: 0;
+        margin: 0 0 0 0px;
+        min-height: 45px;
+        line-height: 45px;
+        border-left: none;
+        margin-bottom: -1px;
+        overflow: hidden;
+        position: relative;
+        border-right: 1px solid #eee;
+    }
+</style>
+<div class="page_title">
+    <div class="container">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="title"><h1>Welcome @User.Identity.GetUserName()!  <small>(<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>)</small></h1></div>
+            <div class="pagenation">&nbsp;@Html.ActionLink("Home", "Index", "Home") <i>/</i> Certificate Verification</div>
+            @*<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>*@
+
+        }
+
+    </div>
+</div><!-- end page title -->
+<!-- Contant
+======================================= -->
+
+<div class="container">
+
+    <div class="content_fullwidth">
+
+        <h2><strong>Tab</strong> Style One</h2>
+
+        <div id="tabs2">
+
+            <ul class="tabs">
+                <li class="active"><a href="#@ViewBag.tab1">Manage Users</a></li>
+                <li class=""><a href="@Url.Content("/ManageCert/Index")">Manage Certificates</a></li>
+                <li class=""><a href="@Url.Content("/ManageCal/Index")">Manage Calender</a></li>
+                @*<li class=""><a href="#tab4">Domain Names</a></li>*@
+
+            </ul><!-- /# end tab links -->
+
+            <div class="tab-container">
+
+                <div id="@ViewBag.tab1" class="tab-content">
+                    <div class="container-fluid">
+                        <h1 class="page-header">Advertisements (6)</h1>
+                        <div class="text-success">@ViewBag.SuccessMsg</div>
+                        <div class="text-danger">@ViewBag.ErrorMsg</div>
+                        @*<input type="submit" class="btn" value="Add">*@
+                        @Html.ActionLink("Add", "Add", "Advertisement", null, new { @class = "btn" })
+                        @*<input type="submit" class="btn" value="Edit">*@
+                        <input type="button" class="btn" value="Delete" id="big-delete">
+                        <p></p>
+
+                        <table class="table table-simple">
+                            <thead>
+                                <tr>
+                                    <th class="min-width nowrap"></th>
+                                    @*<th class="min-width nowrap">NO</th>*@
+                                    <th class="min-width nowrap">Photo</th>
+                                    <th class="min-width nowrap">Link</th>
+                                    @*<th>Cost</th>*@
+
+                                    <th>Updated By</th>
+                                    @*<th>End Date</th>
+                        <th>Updated By</th>*@
+                                    <th>Updated On</th>
+                                    <th class="min-width nowrap"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @*@foreach (var ad in Model)
+                                {
+                                    <tr>
+                                        <td class="min-width nowrap"><input type="checkbox"><input id="id" type="hidden" value="@ad.id" /></td>
+
+                                      
+                                        <td>
+                                            <img src="/Images/Add/@ad.adImg" width="40" style="max-height:30px" alt="" />
+                                            
+                                        </td>
+                                        <td>
+                                            @ad.adURL
+                                        </td>
+                                        <td>@ad.addedBy</td>
+                                       
+                                        <td>@(ad.addedOn == null ? "" : ad.addedOn.ToString("dd MMM yyyy HH:mm"))</td>
+                                        <td class="min-width nowrap"> <a class="btn-alert" style="cursor:pointer" onclick="$('#delete-one').val(@ad.id); showPopup('DeleteOne')">Delete</a></td>
+                                    </tr>
+                                }*@
+
+
+                            </tbody>
+                        </table>
+                        @{
+                            //var pages = Model.totalSpeakers / 10;
+                            //if (Model.totalSpeakers % 10 != 0)
+                            //{
+                            //    pages += 1;
+
+                            //}
+                        }
+                        @*<div class="center">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination" id="pagination"></ul>
+                    <input type="hidden" value="@pages" id="pages" />
+                    <input type="hidden" value="1" id="currentPage" />
+                </nav>
+            </div>*@<!-- /.center -->
+                    </div><!-- /.container-fluid -->
+                </div><!-- end tab single section -->
+                
+
+            </div>
+
+        </div><!-- end tab -->
+
+        <div class="clearfix divider_line5"></div>
+
+
+    </div>
+
+</div><!-- end content area -->

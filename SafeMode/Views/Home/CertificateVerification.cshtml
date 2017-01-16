@@ -1,0 +1,126 @@
+﻿@using SafeMode.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "CertificateVerification";
+    ViewBag.CertVer = "active";
+}
+
+<div class="page_title">
+    <div class="container">
+        <div class="title"><h1>Certificate Verification</h1></div>
+        <div class="pagenation">&nbsp;@Html.ActionLink("Home", "Index", "Home") <i>/</i> Certificate Verification</div>
+    </div>
+</div><!-- end page title -->
+
+<div class="clearfix"></div>
+
+
+<!-- Contant
+======================================= -->
+
+<div class="container">
+
+    <div class="content_left">
+
+
+        <div class="image_frame"><a href="#"><img src="http://placehold.it/810x360" alt="" /></a></div>
+
+
+
+        <div class="clearfix mar_top2"></div>
+
+
+
+
+        <div class="our_products">
+
+
+
+        </div><!-- end products -->
+
+    </div><!-- end content left side area -->
+    <!-- right sidebar starts -->
+    <div class="right_sidebar">
+
+        <div class="sidebar_widget">
+
+            <strong>Please enter your username and password</strong></p>
+
+
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { })
+
+                if(TempData["Error"] != null)
+                {
+                    <span class="error">@TempData["Error"]</span>
+                }
+                <fieldset>
+
+                    @*<?php if (!isset($errorC) || $errorC == true){ ?>*@
+
+                    <label for="name" class="blocklabel">Username*</label>
+                    <p class="">@Html.TextBoxFor(m => m.Email, new { @class = "input_bg" })</p>
+
+
+                    <label for="email" class="blocklabel">Password*</label>
+                    <p class="">@Html.PasswordFor(m => m.Password, new { @class = "input_bg" })</p>
+
+                    <p>
+                        <input type="hidden" id="myemail" name="myemail" value="<?php echo $email_adress_reciever; ?>" />
+                        <input type="hidden" id="myblogname" name="myblogname" value="<?php echo $name_of_your_site; ?>" />
+                        <div class="clearfix"></div>
+                        <br>
+                        <input name="Send" type="submit" value="Login" class="comment_submit" id="send" />
+                    </p>
+                    @*<?php } else { ?>
+
+
+                        <?php } ?>*@
+
+                </fieldset>
+            }
+
+               
+
+
+        </div><!-- end section -->
+
+        <div class="clearfix mar_top4"></div>
+
+        <div class="sidebar_widget">
+
+
+        </div><!-- end section -->
+
+        <div class="clearfix mar_top4"></div>
+
+
+
+        <div class="clearfix mar_top4"></div>
+
+        <div class="sidebar_widget">
+
+
+
+            <div class="portfolio_sidebar_widget">
+
+
+
+                </ul>
+
+            </div>
+
+        </div><!-- end section -->
+
+    </div>
+
+</div><!-- end content area -->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,445 @@
+﻿<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en-gb" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <title>Safe Mode Corporation</title>
+
+    <meta charset="utf-8">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700italic,700,600italic,600,400italic,300italic,300|Roboto:100,300,400,500,700&amp;subset=latin,latin-ext' type='text/css' />
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- ######### CSS STYLES ######### -->
+
+    <link rel="stylesheet" href="~/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/style.css" type="text/css" />
+
+    <link rel="stylesheet" href="~/css/font-awesome/css/font-awesome.min.css">
+
+    <!-- responsive devices styles -->
+    <link rel="stylesheet" media="screen" href="~/css/responsive-leyouts.css" type="text/css" />
+
+
+    <!-- style switcher -->
+    <link rel="stylesheet" media="screen" href="~/js/style-switcher/color-switcher.css" />
+
+    <!-- sticky menu -->
+    <link rel="stylesheet" href="~/js/sticky-menu/core.css">
+
+    <!-- REVOLUTION SLIDER -->
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/css/fullwidth.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/js/revolutionslider/rs-plugin/css/settings.css" media="screen" />
+
+    <!-- jquery jcarousel -->
+    <link rel="stylesheet" type="text/css" href="~/js/jcarousel/skin.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/jcarousel/skin2.css" />
+
+    <!-- faqs -->
+    <link rel="stylesheet" href="~/js/accordion/accordion.css" type="text/css" media="all">
+
+    <!-- tabs css -->
+    <link rel="stylesheet" type="text/css" href="~/js/tabs/tabs.css" />
+
+    <!-- testimonials -->
+    <link rel="stylesheet" href="~/js/testimonials/fadeeffect.css" type="text/css" media="all">
+
+    <style>
+        .validation-summary-errors > ul {
+            color: #bd6767;
+            border-color: #f1bdbd;
+            background-color: #ffdddd;
+            border-radius: 0px;
+            border: 1px solid #bbb;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+    </style>
+
+    <!-- ######### JS FILES ######### -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <!-- get jQuery from the google apis -->
+    <script type="text/javascript" src="~/js/universal/jquery.js"></script>
+
+    <!-- style switcher -->
+    <script src="~/js/style-switcher/jquery-1.js"></script>
+    <script src="~/js/style-switcher/styleselector.js"></script>
+
+    <!-- main menu -->
+    <script type="text/javascript" src="~/js/mainmenu/ddsmoothmenu.js"></script>
+    <script type="text/javascript" src="~/js/mainmenu/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/js/mainmenu/selectnav.js"></script>
+
+    <!-- jquery jcarousel -->
+    <script type="text/javascript" src="~/js/jcarousel/jquery.jcarousel.min.js"></script>
+
+    <!-- REVOLUTION SLIDER -->
+    <script type="text/javascript" src="~/js/revolutionslider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <script type="text/javascript" src="~/js/mainmenu/scripts.js"></script>
+
+    <!-- tabs script -->
+    <script type="text/javascript" src="~/js/tabs/tabs.js"></script>
+
+    <!-- scroll up -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
+        });
+
+        $('.scrollup').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 500);
+            return false;
+        });
+
+    });
+    </script>
+
+    <!-- jquery jcarousel -->
+    <script type="text/javascript">
+
+	jQuery(document).ready(function() {
+			jQuery('#mycarousel').jcarousel();
+	});
+
+	jQuery(document).ready(function() {
+			jQuery('#mycarouseltwo').jcarousel();
+	});
+
+	jQuery(document).ready(function() {
+			jQuery('#mycarouselthree').jcarousel();
+	});
+
+	jQuery(document).ready(function() {
+			jQuery('#mycarouselfour').jcarousel();
+	});
+
+    </script>
+
+
+
+  
+
+    <script type="text/javascript" src="~/js/sticky-menu/core.js"></script>
+    <script type="text/javascript" src="~/js/sticky-menu/modernizr.custom.75180.js"></script>
+
+    <!-- testimonials -->
+    <script type="text/javascript">
+//<![CDATA[
+$(window).load(function(){
+$(".controlls li a").click(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('class');
+    $('#slider div:visible').fadeOut(500, function() {
+        $('div#' + id).fadeIn();
+    })
+});
+});//]]>
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="wrapper_boxed">
+
+        <div class="site_wrapper">
+
+
+            <!-- HEADER -->
+            <header id="header">
+
+                <!-- Top header bar -->
+                <div id="topHeader">
+
+                    <div class="wrapper">
+
+                        <div class="top_contact_info">
+
+                            <div class="container">
+
+                                <div class="date_wrap">
+                                    <script type="text/javascript">
+            var mydate=new Date()
+            var year=mydate.getYear()
+            if (year < 1000)
+            year+=1900
+            var day=mydate.getDay()
+            var month=mydate.getMonth()
+            var daym=mydate.getDate()
+            if (daym<10)
+            daym="0"+daym
+            var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+            document.write("<b class='date'>"+montharray[month]+" "+daym+", "+year+"</b>")
+                                    </script>
+                                </div><!-- end date -->
+
+                                <ul class="tci_list">
+
+
+                                    <li class="empty"><i class="fa fa-envelope"></i> info@safe-mc.com</li>
+                                    <li class="empty"><i class="fa fa-phone"></i> +974 74767701</li>
+                                    <li class="empty"><a href="#"<i class="fa fa-facebook"></a></i></li>
+                                    <li class="empty"><a href="#"<i class="fa fa-linkedin"></a></i></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div><!-- end top contact info -->
+
+                    </div>
+
+                </div>
+
+                <!-- Top header bar -->
+                <div id="trueHeader">
+
+                    <div class="wrapper">
+
+                        <div class="container">
+
+                            <!-- Logo -->
+                            <div class="one_fourth"><a href="index.html" id="logo"></a></div>
+
+                            <!-- Menu -->
+                            <div class="three_fourth last">
+
+                                <nav id="access" class="access" role="navigation">
+
+                                    <div id="menu" class="menu">
+
+                                        <ul id="tiny">
+
+                                            <li>@Html.ActionLink("Home", "Index", "Home",null, new { @class= ViewBag.Home })</li>
+                                            <li>@Html.ActionLink("About Us", "About","Home",null, new { @class = ViewBag.About })</li>
+                                            <li>
+                                                <a href="@Url.Action("Index","Services")" class="@ViewBag.Services">Services<i class="fa fa-angle-down"></i></a>
+
+                                                <ul>
+                                                    <li>@Html.ActionLink("Health and safety policy", "Health_and_safety_policy", "Services")
+                                                    @*<a href="services_Health_and_safety_policy.html"></a>*@</li>
+                                                    <li>@Html.ActionLink("HSE Construction plan", "HSE_Construction_plan", "Services")
+                                                    @*<a href="services_HSE_Construction_plan.html"></a>*@</li>
+                                                    <li>@Html.ActionLink("Health and safety audit", "Health_and_safety_audit", "Services")
+                                                    @*<a href="services_Health_and_safety_audit.html"></a>*@</li>
+                                                    <li>@Html.ActionLink("Risk Assessments", "Risk_Assessments", "Services")
+                                                    @*<a href="services_Risk_Assessments.html"></a>*@</li>
+                                                    <li>@Html.ActionLink("HSE Training", "HSE_Training", "Services")
+                                                    @*<a href="services_HSE_Training.html"></a>*@</li>
+                                                    <li>@Html.ActionLink("Supplying Senior HSE Personnel", "Supplying_Senior_HSE_Personnel", "Services")
+                                                    @*<a href="services_Supplying_Senior_HSE_Personnel.html"> </a>*@</li>
+                                                    <li>@Html.ActionLink("Provide third party equipment certificates", "Provide_third_party_equipment_certificates", "Services")
+                                                    @*<a href="services_Provide third_party_equipment_certificates.html"></a>*@</li>
+
+                                                </ul>
+
+
+                                            </li>
+
+                                            <li>
+                                                
+                                                @Html.ActionLink("Calendar", "Calendar", "Home", null, new { @class = ViewBag.Calendar })
+                                            </li>
+                                            <li>@Html.ActionLink("Certificate Verification", "CertificateVerification", "Home", null, new { @class = ViewBag.CertVer })
+
+                                            <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = ViewBag.Contact })</li>
+
+                                        </ul>
+
+                                    </div>
+
+                                </nav><!-- end nav menu -->
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header><!-- end header -->
+
+
+            <div class="clearfix"></div>
+
+
+            @RenderBody()
+
+          
+
+
+            <div class="clearfix"></div>
+
+            <div class="features_sec05">
+                <div class="container">
+
+                    <div class="twitter_feeds">
+
+                        <a href="#" target="_blank"><strong></strong></a> "Success will always be with you, as long as you place safety as the first priority".
+                        <br />
+                        <a href="#">Safety begins with team work</a>
+
+                    </div><!-- end twitter feeds -->
+
+                    <div class="right_sec">
+
+                        <strong>Safety First</strong>
+
+                        We believe in keeping you safe in your site and work place
+
+                    </div>
+
+                </div>
+            </div><!-- end features section 5-->
+
+            <div class="clearfix"></div>
+
+
+            <div class="footer">
+
+                <div class="container">
+
+                    <div class="one_fourth">
+
+                        <div class="footer_logo"><img src="~/images/footer-logo.png" alt="" /></div><!-- end footer logo -->
+
+                        <ul class="contact_address">
+                            <li><i class="fa fa-map-marker fa-lg"></i>&nbsp;P.O.B 22390 Ain Khalid, Doha<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State of Qatar</li>
+                            <li><i class="fa fa-phone"></i>&nbsp; +974 74767701</li>
+                            <li><i class="fa fa-print"></i>&nbsp; +974 74767701</li>
+                        </ul>
+
+                    </div><!-- end section -->
+
+                    <div class="one_fourth">
+
+                        <h3>Find More</h3>
+
+                        <ul class="list">
+                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-right"></i> Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")"><i class="fa fa-angle-right"></i> About Us</a></li>
+                            <li><a href="@Url.Action("Index", "Services")"><i class="fa fa-angle-right"></i> Services</a></li>
+
+                            <li><a href="@Url.Action("Contact", "Home")"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+
+
+
+                        </ul>
+
+                    </div><!-- end section -->
+
+
+                    <div class="one_fourth">
+
+                        <h3>Certificates</h3>
+                        <div class="footer_logo"><img src="~/images/cer1.png" alt="" /></div><!-- end footer logo -->
+                        <div class="footer_logo"><img src="~/images/cer1.png" alt="" /></div><!-- end footer logo -->
+
+
+
+                    </div><!-- end section -->
+
+
+                    <div class="one_fourth last">
+
+                        <h3>Have any Questions</h3>
+
+                        <div class="any_questions">
+                            <img src="~/images/tel.png" alt="" />
+                            <p>Contact us for your query</p>
+                            <div class="clearfix mar_top1"></div>
+                            <h3><i>Tel :</i>  +974 74767701</h3>
+                        </div>
+
+                    </div><!-- end section -->
+
+                </div>
+
+                <div class="footer_sectwo">
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="arrow_up"></div>
+
+        <div class="copyright_info">
+
+            <div class="container">
+
+                <div class="one_half">
+
+                    <b>Copyright © 2016 Safe Mode Corporation. All rights reserved. </b>
+
+                </div>
+
+                <div class="one_half last">
+
+                    <ul class="footer_social_links">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- Footer
+        ======================================= -->
+
+
+
+        <a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
+
+
+
+
+    </div>
+    </div>
+
+
+   
+
+</body>
+</html>

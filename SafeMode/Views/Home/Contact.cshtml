@@ -1,0 +1,129 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@*@using MathCaptcha;*@
+@using CaptchaMvc; 
+@using SafeMode.Models
+@model ContactViewModel
+@{
+    
+    ViewBag.Title = "Contact";
+    ViewBag.Contact = "active";
+}
+<div class="page_title">
+    <div class="container">
+        <div class="title"><h1>Contact</h1></div>
+        <div class="pagenation">&nbsp;@Html.ActionLink("Home", "Index", "Home") <i>/</i> Contact</div>
+    </div>
+</div><!-- end page title -->
+
+<div class="clearfix"></div>
+
+
+
+<!-- Contant
+======================================= -->
+
+<div class="container">
+
+    <div class="content_fullwidth">
+
+        <div class="one_half">
+
+
+            <p>Feel free to talk to our representative at any time you please using call or mail or one of the below instant messaging programs.</p>
+            <br />
+            <strong>Phone General Inquiries: +97474767701</strong></p>
+
+            <br />
+
+            <h3><i>Contact Form</i></h3>
+
+          @using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+          {
+            @Html.AntiForgeryToken()
+            if (ViewBag.Error == "True")
+            {
+                @Html.ValidationSummary(false, "", new { @class = "error" })
+            }
+
+            <fieldset>
+
+                @*<?php if (!isset($errorC) || $errorC == true){ ?>*@
+                @if (ViewBag.Success != "True")
+                {
+                    <label for="name" class="blocklabel">Your Name*</label>
+                    <p class="">@Html.TextBoxFor(m => m.Name, new { @class = "input_bg" })</p>
+
+
+
+                    <label for="email" class="blocklabel">E-Mail*</label>
+                    <p class="">@Html.TextBoxFor(m => m.Mail, new { @class = "input_bg" })</p>
+
+
+                    <label for="website" class="blocklabel">Website</label>
+                    <p>@Html.TextBoxFor(m => m.Website, new { @class = "input_bg" })</p>
+
+
+                    <label for="message" class="blocklabel">Your Message*</label>
+                    <p class="">
+                        @*<textarea name="Message" class="textarea_bg" id="message" cols="20" rows="7"></textarea>*@
+                    @Html.TextAreaFor(m => m.Message, new { @class = "textarea_bg", cols = "20", rows = "7" })
+                </p>
+
+                <p>@Html.Captcha(4)</p>
+
+                <br />
+                <p>
+                    <input type="hidden" id="myemail" name="myemail" value="" />
+                    <input type="hidden" id="myblogname" name="myblogname" value="" />
+                    <div class="clearfix"></div>
+                    <input name="Send" type="submit" value="SUBMIT" class="comment_submit" id="send" />
+                </p>
+                }
+                else
+                {
+                    <div class="success">
+                        <div class="message-box-wrap">
+                            Your message has been <strong>Received Successfully!</strong> Thank you!
+                        </div>
+                    </div>
+                }
+
+
+                @*<?php } else { ?>
+
+                    
+
+                    <?php } ?>*@
+
+            </fieldset>
+          }
+               
+
+        </div>
+
+        <div class="one_half last">
+
+            <div class="address-info">
+                <h3><i>Address Info</i></h3>
+                <ul>
+                    <li>
+                        <strong>Safe Mode Corporation</strong><br />
+                        P.O.B 22390 Ain Khalid, Doha, State of Qatar<br />
+                        Telephone: +974 74767701<br />
+                        FAX: +974 74767701<br />
+                        E-mail: <a href="mailto:info@safe-mc.com">info@safe-mc.com</a><br />
+                        Website: <a href="index.html">www.safe-mc.com</a>
+                    </li>
+                </ul>
+            </div>
+
+            <h3><i>Find the Address</i></h3>
+            <iframe class="google-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5281.560871941098!2d51.52309155592922!3d25.34865302086107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd68e6f4627888ba7!2sThe+St.+Regis+Doha!5e0!3m2!1sen!2sqa!4v1473965116434" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        </div>
+
+    </div>
+
+</div><!-- end content area -->
+
+
