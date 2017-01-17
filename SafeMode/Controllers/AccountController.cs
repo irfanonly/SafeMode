@@ -457,7 +457,12 @@ namespace SafeMode.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "User");
+
+            
+            
+                return RedirectToAction("Index", "User");
+            
+            
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

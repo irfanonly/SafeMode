@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     ViewBag.Admin = "active";
     ViewBag.tab1 = "tab1";
+    ViewBag.CertVer = "active";
 }
 <style>
     ul.tabs2 {
@@ -82,11 +83,60 @@
 
             </ul><!-- /# end tab links -->
 
+            <div class="clearfix divider_line8"></div>
+            <div class="one_full">
+
+                <h2><strong>Style of</strong> Tables</h2>
+                <div class="table-style">
+                    <table class="table-list">
+                        <tbody>
+                            <tr>
+                                <th>UserName</th>
+                                <th>FullName</th>
+                                <th>Updated By</th>
+                                <th>Updated On</th>
+                            </tr>
+                            <tr>
+                                <td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                            </tr>
+                            <tr>
+                                <td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                            </tr>
+                            <tr>
+                                <td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                            </tr>
+                            <tr>
+                                <td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                            </tr>
+                            <tr>
+                                <td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
             <div class="tab-container">
 
                 <div id="@ViewBag.tab1" class="tab-content">
                     <div class="container-fluid">
-                        <h1 class="page-header">Advertisements (6)</h1>
+                        <h1 class="page-header">Users (6)</h1>
                         <div class="text-success">@ViewBag.SuccessMsg</div>
                         <div class="text-danger">@ViewBag.ErrorMsg</div>
                         @*<input type="submit" class="btn" value="Add">*@

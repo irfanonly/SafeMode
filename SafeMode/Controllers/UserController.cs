@@ -12,6 +12,10 @@ namespace SafeMode.Controllers
         // GET: User
         public ActionResult Index()
         {
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
     }
