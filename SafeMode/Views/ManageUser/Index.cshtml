@@ -71,7 +71,7 @@
 
     <div class="content_fullwidth">
 
-        <h2><strong>Tab</strong> Style One</h2>
+        @*<h2><strong>Tab</strong> Style One</h2>*@
 
         <div id="tabs2">
 
@@ -82,127 +82,86 @@
                 @*<li class=""><a href="#tab4">Domain Names</a></li>*@
 
             </ul><!-- /# end tab links -->
-
-            <div class="clearfix divider_line8"></div>
-            <div class="one_full">
-
-                <h2><strong>Style of</strong> Tables</h2>
-                <div class="table-style">
-                    <table class="table-list">
-                        <tbody>
-                            <tr>
-                                <th>UserName</th>
-                                <th>FullName</th>
-                                <th>Updated By</th>
-                                <th>Updated On</th>
-                            </tr>
-                            <tr>
-                                <td>Content 1</td>
-                                <td>Content 2</td>
-                                <td>Content 3</td>
-                                <td>Content 4</td>
-                            </tr>
-                            <tr>
-                                <td>Content 1</td>
-                                <td>Content 2</td>
-                                <td>Content 3</td>
-                                <td>Content 4</td>
-                            </tr>
-                            <tr>
-                                <td>Content 1</td>
-                                <td>Content 2</td>
-                                <td>Content 3</td>
-                                <td>Content 4</td>
-                            </tr>
-                            <tr>
-                                <td>Content 1</td>
-                                <td>Content 2</td>
-                                <td>Content 3</td>
-                                <td>Content 4</td>
-                            </tr>
-                            <tr>
-                                <td>Content 1</td>
-                                <td>Content 2</td>
-                                <td>Content 3</td>
-                                <td>Content 4</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
             <div class="tab-container">
 
                 <div id="@ViewBag.tab1" class="tab-content">
-                    <div class="container-fluid">
-                        <h1 class="page-header">Users (6)</h1>
-                        <div class="text-success">@ViewBag.SuccessMsg</div>
-                        <div class="text-danger">@ViewBag.ErrorMsg</div>
-                        @*<input type="submit" class="btn" value="Add">*@
-                        @Html.ActionLink("Add", "Add", "Advertisement", null, new { @class = "btn" })
-                        @*<input type="submit" class="btn" value="Edit">*@
-                        <input type="button" class="btn" value="Delete" id="big-delete">
-                        <p></p>
 
-                        <table class="table table-simple">
-                            <thead>
-                                <tr>
-                                    <th class="min-width nowrap"></th>
-                                    @*<th class="min-width nowrap">NO</th>*@
-                                    <th class="min-width nowrap">Photo</th>
-                                    <th class="min-width nowrap">Link</th>
-                                    @*<th>Cost</th>*@
+                    @*<div class="clearfix divider_line8"></div>*@
+                    <div class="one_full">
 
-                                    <th>Updated By</th>
-                                    @*<th>End Date</th>
-                        <th>Updated By</th>*@
-                                    <th>Updated On</th>
-                                    <th class="min-width nowrap"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @*@foreach (var ad in Model)
-                                {
+                        <h2><strong>Users</strong> (6)</h2>
+
+                        <div class="success">
+
+                            @ViewBag.SuccessMsg
+                        </div>
+
+                        <div class="error">
+
+                            @ViewBag.ErrorMsg
+                        </div>
+                        <ul class="list_empty">
+                            <li><a href="#" class="but_plus"><i class="fa fa-plus fa-lg"></i> Add New User</a> </li>
+                            <li><a href="#" class="but_plus"><i class="fa fa-minus fa-lg"></i> Delete Selected Users</a> </li>
+                          
+                            <li><input class="input_bg" type="text" /><a href="#" class="but_plus"><i class="fa fa-search  fa-lg"></i> Search</a> </li>
+                        </ul>
+                      
+                       
+                        <div class="table-style">
+                            <table class="table-list">
+                                <tbody>
                                     <tr>
-                                        <td class="min-width nowrap"><input type="checkbox"><input id="id" type="hidden" value="@ad.id" /></td>
-
-                                      
-                                        <td>
-                                            <img src="/Images/Add/@ad.adImg" width="40" style="max-height:30px" alt="" />
-                                            
-                                        </td>
-                                        <td>
-                                            @ad.adURL
-                                        </td>
-                                        <td>@ad.addedBy</td>
-                                       
-                                        <td>@(ad.addedOn == null ? "" : ad.addedOn.ToString("dd MMM yyyy HH:mm"))</td>
-                                        <td class="min-width nowrap"> <a class="btn-alert" style="cursor:pointer" onclick="$('#delete-one').val(@ad.id); showPopup('DeleteOne')">Delete</a></td>
+                                        <th></th>
+                                        <th>Username</th>
+                                        <th>Name/ Company Name</th>
+                                        <th>Contact</th>
+                                        <th>Email</th>
                                     </tr>
-                                }*@
+                                    <tr>
+                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                        <td>Content 1</td>
+                                        <td>Content 2</td>
+                                        <td>Content 3</td>
+                                        <td>Content 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                        <td>Content 1</td>
+                                        <td>Content 2</td>
+                                        <td>Content 3</td>
+                                        <td>Content 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                        <td>Content 1</td>
+                                        <td>Content 2</td>
+                                        <td>Content 3</td>
+                                        <td>Content 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                        <td>Content 1</td>
+                                        <td>Content 2</td>
+                                        <td>Content 3</td>
+                                        <td>Content 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                        <td>Content 1</td>
+                                        <td>Content 2</td>
+                                        <td>Content 3</td>
+                                        <td>Content 4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
+                    </div>
 
-                            </tbody>
-                        </table>
-                        @{
-                            //var pages = Model.totalSpeakers / 10;
-                            //if (Model.totalSpeakers % 10 != 0)
-                            //{
-                            //    pages += 1;
-
-                            //}
-                        }
-                        @*<div class="center">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination" id="pagination"></ul>
-                    <input type="hidden" value="@pages" id="pages" />
-                    <input type="hidden" value="1" id="currentPage" />
-                </nav>
-            </div>*@<!-- /.center -->
-                    </div><!-- /.container-fluid -->
+                 
                 </div><!-- end tab single section -->
-                
+
 
             </div>
 

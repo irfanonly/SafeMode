@@ -3163,7 +3163,7 @@ a.but_woman:hover {
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
-	border: 1px solid #bbb;
+	/*border: 1px solid #bbb;*/
 	margin-bottom: 20px;
 	font-size: 13px;
 }
@@ -3452,11 +3452,11 @@ ul.list2 {
 
 /* tables */
 .table-style {
-	float: left;
+	/*float: left;*/
 	width: 100%;
 }
 .table-list {
-	float: left;
+	/*float: left;*/
 	background-color: #fff;
 	border: 1px solid #dddddd;
 	margin-bottom:20px;
@@ -4193,4 +4193,10 @@ a.knowmore_but:hover {
     text-indent:-9999px;
     background: url(../images/scroll-top-arrow.png) no-repeat left top;
 	z-index: 999;
+}
+
+input[type=checkbox]{
+    width:20px;
+    height:20px;
+
 }
