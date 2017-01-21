@@ -3017,6 +3017,16 @@ a.but_plus:hover {
 	background-color: #444444;
 }
 
+button.but_plus {
+	padding: 10px 22px 10px 22px;
+	margin: 0px 0px 0px 0px;
+	background: #333333;
+	border-bottom: 1px solid #909090;
+}
+button.but_plus:hover {
+	background-color: #444444;
+}
+
 a.but_folder_open {
 	padding: 10px 22px 10px 22px;
 	margin: 0px 0px 0px 0px;
