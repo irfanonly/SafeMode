@@ -16,7 +16,7 @@ namespace SafeMode
     public partial class safeModeEntities : DbContext
     {
         public safeModeEntities()
-            : base("name=safeModeEntities")
+            : base("name=safeModeEntities2")
         {
         }
     

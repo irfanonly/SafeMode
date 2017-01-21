@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model IQueryable<SafeMode.AspNetUser>
 @{
     ViewBag.Title = "Index";
     ViewBag.Admin = "active";
@@ -6,6 +7,10 @@
     ViewBag.CertVer = "active";
 }
 <style>
+
+    .checkbox{
+       width:30px;
+    }
     ul.tabs2 {
         margin: 0;
         padding: 0;
@@ -114,47 +119,25 @@
                             <table class="table-list">
                                 <tbody>
                                     <tr>
-                                        <th></th>
+                                        <th class="checkbox"></th>
                                         <th>Name/ Company Name</th>
                                         <th>Username</th>
                                         <th>Contact</th>
                                         <th>Email</th>
+                                        <th></th>
                                     </tr>
-                                    <tr>
-                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
-                                        <td>Content 1</td>
-                                        <td>Content 2</td>
-                                        <td>Content 3</td>
-                                        <td>Content 4</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
-                                        <td>Content 1</td>
-                                        <td>Content 2</td>
-                                        <td>Content 3</td>
-                                        <td>Content 4</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
-                                        <td>Content 1</td>
-                                        <td>Content 2</td>
-                                        <td>Content 3</td>
-                                        <td>Content 4</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
-                                        <td>Content 1</td>
-                                        <td>Content 2</td>
-                                        <td>Content 3</td>
-                                        <td>Content 4</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
-                                        <td>Content 1</td>
-                                        <td>Content 2</td>
-                                        <td>Content 3</td>
-                                        <td>Content 4</td>
-                                    </tr>
+                                   
+                                    @foreach (var user in Model)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                            <td>@user.Name</td>
+                                            <td>@user.UserName</td>
+                                            <td>@user.PhoneNumber</td>
+                                            <td>@user.Email</td>
+                                            <td><a>Edit</a></td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
