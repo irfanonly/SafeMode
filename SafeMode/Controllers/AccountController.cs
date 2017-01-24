@@ -18,6 +18,8 @@ namespace SafeMode.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        safeModeEntities db = new safeModeEntities();
+
         public AccountController()
         {
         }
@@ -141,6 +143,58 @@ namespace SafeMode.Controllers
         public ActionResult Register()
         {
             return View();
+        }
+
+
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult RegisterUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        // [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterUser(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.UserName };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    var currentUser = UserManager.FindByName(user.UserName);
+
+
+                    var roleresult = UserManager.AddToRole(currentUser.Id, "user");
+
+                    // update userdetails
+                    var cUser = db.AspNetUsers.Where(x => x.Id == currentUser.Id).FirstOrDefault();
+
+                    cUser.Email = model.Email;
+                    cUser.Name = model.Name;
+                    cUser.PhoneNumber = model.PhoneNumber;
+
+                    db.SaveChanges();
+                    //await SignInAsync(user, isPersistent: false);
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    TempData["Succuss"] = "Successfully user added";
+                    return RedirectToAction("Index", "ManageUser");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //
@@ -492,6 +546,11 @@ namespace SafeMode.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+
+
+
+
+            
         }
         #endregion
     }

@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model SafeMode.Models.RegisterViewModel
 @{
     ViewBag.Admin = "active";
     ViewBag.tab1 = "tab1";
@@ -104,36 +105,36 @@
 
                             @ViewBag.ErrorMsg
                         </div>
-                        @using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        @using (Html.BeginForm("RegisterUser", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                         {
                             @Html.AntiForgeryToken()
-                            if (ViewBag.Error == "True")
-                            {
+                            //if (ViewBag.Error == "True")
+                            //{
                                 @Html.ValidationSummary(false, "", new { @class = "error" })
-                            }
+                            @*}*@
 
                             <fieldset>
 
-                                @*<?php if (!isset($errorC) || $errorC == true){ ?>*@
-                                @if (ViewBag.Success != "True")
-                {
                                     <label for="name" class="blocklabel">Name/ Company Name*</label>
-                                    <p class="">@Html.TextBox("Name",null, new { @class = "input_bg" })</p>
+                                    <p class="">@Html.TextBoxFor(m => m.Name, new { @class = "input_bg" })</p>
 
 
 
                                     <label for="email" class="blocklabel">Username*</label>
-                                    <p class="">@Html.TextBox("Mail",null, new { @class = "input_bg" })</p>
+                                    <p class="">@Html.TextBoxFor(m => m.UserName, new { @class = "input_bg" })</p>
 
 
                                     <label for="website" class="blocklabel">Password*</label>
-                                    <p>@Html.TextBox("Website", null, new { @class = "input_bg" })</p>
+                                    <p>@Html.PasswordFor(m => m.Password, new { @class = "input_bg" })</p>
+
+                                    <label for="website" class="blocklabel">Confirm Password*</label>
+                                    <p>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input_bg" })</p>
 
                                     <label for="message" class="blocklabel">Email*</label>
-                                    <p>@Html.TextBox("Website", null, new { @class = "input_bg" })</p>
+                                    <p>@Html.TextBoxFor(m => m.Email, new { @class = "input_bg" })</p>
 
                                     <label for="message" class="blocklabel">Contact No*</label>
-                                    <p>@Html.TextBox("Website", null, new { @class = "input_bg" })</p>
+                                    <p>@Html.TextBoxFor( m => m.PhoneNumber, new { @class = "input_bg" })</p>
 
                                     @*<p>@Html.Captcha(4)</p>*@
 
@@ -146,15 +147,8 @@
                                         <input name="Send" type="submit" value="ADD USER" class="comment_submit" />
                                         <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageUser/'" />
                                     </p>
-                                }
-                                else
-                                {
-                                    <div class="success">
-                                        <div class="message-box-wrap">
-                                            Your message has been <strong>Received Successfully!</strong> Thank you!
-                                        </div>
-                                    </div>
-                                }
+                              
+                               
 
 
                                 @*<?php } else { ?>

@@ -64,9 +64,24 @@ namespace SafeMode.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "Name/ Company Name")]
+        public string Name { get; set; }
+
+
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+
         [Required]
         //[EmailAddress]
-        [Display(Name = "Username")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
