@@ -325,6 +325,37 @@ namespace SafeMode.Controllers
             return View();
         }
 
+
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(ChangePasswordVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByNameAsync(model.UserName);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToAction("ResetPasswordConfirmation", "Account");
+            }
+            var result = await UserManager.RemovePasswordAsync(user.Id);
+
+            result = await UserManager.AddPasswordAsync(user.Id,model.Password);
+            if (result.Succeeded)
+            {
+
+                TempData["Succuss"] = "Successfully password updated";
+                return RedirectToAction("Index", "ManageUser");
+            }
+            AddErrors(result);
+            return View();
+        }
+
+
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]

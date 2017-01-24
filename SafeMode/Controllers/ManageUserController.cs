@@ -46,9 +46,59 @@ namespace SafeMode.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(user);
+
+            UserEditVM userEditVM = new UserEditVM
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Name = user.Name,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+
+
+            return View(userEditVM);
         }
 
+        [HttpPost]
+        public ActionResult Edit(UserEditVM userEditVM) {
+
+            if (ModelState.IsValid)
+            {
+                var user = db.AspNetUsers.Find(userEditVM.Id);
+
+                user.Name = userEditVM.Name;
+                user.Email = userEditVM.Email;
+                user.PhoneNumber = userEditVM.PhoneNumber;
+
+                db.SaveChanges();
+
+                TempData["Succuss"] = "Successfully user updated";
+
+                return RedirectToAction("Index");
+            }
+
+            return View(userEditVM);
+        }
+
+        public ActionResult ChangePassword(string id)
+        {
+            var user = db.AspNetUsers.Find(id);
+
+            if (user == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ChangePasswordVM userEditVM = new ChangePasswordVM
+            {
+                Id = user.Id,
+                UserName = user.UserName
+               
+            };
+
+            return View(userEditVM);
+        }
 
     }
 }

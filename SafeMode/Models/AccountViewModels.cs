@@ -75,7 +75,7 @@ namespace SafeMode.Models
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Contact No")]
         public string PhoneNumber { get; set; }
 
 
