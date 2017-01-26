@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security;
+using PagedList;
 
 namespace SafeMode.Controllers
 {
@@ -16,7 +17,7 @@ namespace SafeMode.Controllers
 
 
         // GET: ManageUser
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             if (TempData["Succuss"] != null)
             {
@@ -27,9 +28,9 @@ namespace SafeMode.Controllers
                 ViewBag.ErrorMsg = TempData["Error"];
             }
 
-            var users = db.AspNetUsers.Where(x => x.AspNetRoles.FirstOrDefault().Id == "2");
+            var users = db.AspNetUsers.Where(x => x.AspNetRoles.FirstOrDefault().Id == "2").OrderBy(x => x.Name);
 
-            return View(users);
+            return View(users.ToPagedList(page, 2));
         }
 
         public ActionResult Add()

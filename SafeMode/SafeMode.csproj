@@ -81,6 +81,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -263,6 +271,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\responsive-leyouts.css" />
     <Content Include="css\style.css" />
@@ -336,6 +345,8 @@
     <Content Include="images\training.jpg" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\waves-graph.png" />
+    <Content Include="js\tabs\tabs.css" />
+    <Content Include="js\tabs\tabs.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -438,7 +449,6 @@
     <Folder Include="js\revolutionslider\" />
     <Folder Include="js\sticky-menu\" />
     <Folder Include="js\style-switcher\" />
-    <Folder Include="js\tabs\" />
     <Folder Include="js\testimonials\" />
     <Folder Include="js\thumbszoom\" />
     <Folder Include="js\universal\" />

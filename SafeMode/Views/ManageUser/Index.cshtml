@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
-@model IQueryable<SafeMode.AspNetUser>
+@model PagedList.IPagedList<SafeMode.AspNetUser>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     ViewBag.Admin = "active";
@@ -94,7 +97,7 @@
                     @*<div class="clearfix divider_line8"></div>*@
                     <div class="one_full">
 
-                        <h2><strong>Users</strong> (@Model.Count())</h2>
+                        @*<h2><strong>Users</strong> (@Model.Count())</h2>*@
 
                         <div class="success">
 
@@ -142,6 +145,14 @@
                             </table>
                         </div>
 
+                        <div style="text-align:center">
+                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+
+                        </div>
+
                     </div>
 
                  
@@ -158,3 +169,5 @@
     </div>
 
 </div><!-- end content area -->
+
+
