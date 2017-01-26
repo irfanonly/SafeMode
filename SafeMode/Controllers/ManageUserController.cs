@@ -17,7 +17,7 @@ namespace SafeMode.Controllers
 
 
         // GET: ManageUser
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(string username,int page = 1)
         {
             if (TempData["Succuss"] != null)
             {
@@ -30,7 +30,13 @@ namespace SafeMode.Controllers
 
             var users = db.AspNetUsers.Where(x => x.AspNetRoles.FirstOrDefault().Id == "2").OrderBy(x => x.Name);
 
-            return View(users.ToPagedList(page, 2));
+            if(username != null  && username != "")
+            {
+                ViewBag.username = username;
+                users = users.Where(x => x.UserName.Contains(username)).OrderBy(x => x.Name);
+            }
+
+            return View(users.ToPagedList(page, 10));
         }
 
         public ActionResult Add()
