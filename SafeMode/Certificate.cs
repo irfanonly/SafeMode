@@ -20,7 +20,9 @@ namespace SafeMode
         public string uploadedby { get; set; }
         public System.DateTime uploadedon { get; set; }
         public Nullable<int> typeid { get; set; }
+        public string assigneeid { get; set; }
     
         public virtual CertType CertType { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

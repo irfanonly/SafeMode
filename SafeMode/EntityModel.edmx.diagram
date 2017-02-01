@@ -17,6 +17,7 @@
         <AssociationConnector Association="safeModeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="safeModeModel.FK_Certificate_CertType" ManuallyRouted="false" />
         <AssociationConnector Association="safeModeModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="safeModeModel.FK_Certificate_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
