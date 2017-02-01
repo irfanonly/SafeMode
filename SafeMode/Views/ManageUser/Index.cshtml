@@ -3,6 +3,8 @@
 @using PagedList.Mvc;
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/overlaypopup.css" rel="stylesheet" />
+<script src="~/Scripts/popup.js"></script>
 @{
     ViewBag.Title = "Index";
     ViewBag.Admin = "active";
@@ -116,7 +118,7 @@
                             <li  style="padding-top:5px"><a onclick="$('#form1').submit()" class="but_plus" ><i class="fa fa-search  fa-lg"></i> Search</a> </li>
                             <li style="padding-top:5px"><a href="/ManageUser/Index" class="but_plus"><i class="fa fa-refresh fa-lg"></i> Reset</a> </li>
                             <li style="padding-top:5px"><a href="/Account/RegisterUser" class="but_plus"><i class="fa fa-plus fa-lg"></i> Add New User</a> </li>
-                            <li style="padding-top:5px"><a href="#" class="but_plus"><i class="fa fa-minus fa-lg"></i> Delete Selected Users</a> </li>
+                            <li style="padding-top:5px"><a id="big-delete" class="but_plus"><i class="fa fa-minus fa-lg"></i> Delete Selected Users</a> </li>
                           
                            
                         </ul>
@@ -137,7 +139,7 @@
                                     @foreach (var user in Model)
                                     {
                                         <tr>
-                                            <td><input type="checkbox">@*<input id="id" type="hidden" value="@ad.id" />*@</td>
+                                            <td><input type="checkbox"><input id="id" type="hidden" value="@user.Id" /></td>
                                             <td>@user.Name</td>
                                             <td>@user.UserName</td>
                                             <td>@user.PhoneNumber</td>
@@ -173,5 +175,61 @@
     </div>
 
 </div><!-- end content area -->
+
+<div class="overlay-bg"></div>
+
+<div class="overlay-content but_warning_sign popupDeleteMultiple" style="padding:0px;">
+
+
+
+    <div id="DeleteOneInfo" style="padding:7%;text-align:center">
+
+
+        <h3>
+            <i class="fa fa-warning" style="font-size:35px;padding:3px"></i>
+            Do you really want to delete <span id="course-count"></span> item/s?
+        </h3>
+
+        <div class="center">
+            @*<button type="button" id="delete-multiple" class="btn" value="" style="margin-right:4px">Delete</button>*@
+            @*<input type="button" class="btn close-btn" value="Cancel">*@
+            <a id="delete-multiple"  class="but_ok_2"><i class="fa fa-check fa-lg"></i> Ok</a>
+            <a class="but_remove_2 close-btn"><i class="fa fa-times-circle fa-lg"></i> Cancel</a>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<script>
+$('#delete-one').click(function () {
+
+    window.location.href = '/Course/Delete/' + $(this).val();
+});
+    $('#delete-multiple').click(function () {
+
+        window.location.href = '/ManageUser/Delete/' + $(this).val();
+    });
+    $('#big-delete').click(function () {
+        if ($('input:checkbox:checked').length > 0) {
+            $('#course-count').text($('input:checkbox:checked').length);
+            showPopup('DeleteMultiple');
+            var array = [];
+            var ind = 0;
+            $('input:checkbox:checked').next('#id').each(function (e) {
+
+                array[ind] =   $(this).val();
+                ind++;
+
+            });
+            $('#delete-multiple').val(array.join(','));
+            //console.log(array.join(','));
+        }
+
+    });
+</script>
 
 

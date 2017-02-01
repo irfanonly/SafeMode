@@ -67,6 +67,27 @@ namespace SafeMode.Controllers
             return View(userEditVM);
         }
 
+        public ActionResult Delete(string id)
+        {
+            var idss = id.Split(',');
+
+            foreach(var i in idss)
+            {
+                
+                var user = db.AspNetUsers.Find(i);
+                db.AspNetUsers.Remove(user);
+
+            }
+
+            db.SaveChanges();
+
+            TempData["Succuss"] = "Successfully user deleted";
+
+            return RedirectToAction("Index");
+
+           
+        }
+
         [HttpPost]
         public ActionResult Edit(UserEditVM userEditVM) {
 
