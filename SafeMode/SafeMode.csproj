@@ -436,6 +436,7 @@
     <Content Include="Views\Account\RegisterUser.cshtml" />
     <Content Include="Views\ManageUser\Edit.cshtml" />
     <Content Include="Views\ManageUser\ChangePassword.cshtml" />
+    <Content Include="Views\ManageCert\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

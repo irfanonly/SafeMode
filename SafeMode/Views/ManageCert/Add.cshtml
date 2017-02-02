@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model SafeMode.Models.RegisterViewModel
+@model SafeMode.Certificate
 @{
     ViewBag.Admin = "active";
     ViewBag.tab1 = "tab1";
@@ -35,13 +35,12 @@
 
         @*<h2><strong>Tab</strong> Style One</h2>*@
 
-        <div id="tabs2">
+        <div id="tabs">
 
-            <ul class="tabs">
-                <li class="active"><a href="#@ViewBag.tab1">Manage Users</a></li>
-                <li class=""><a href="@Url.Content("/ManageCert/Index")">Manage Certificates</a></li>
+            <ul class="tabs2">
+                <li class=""><a href="@Url.Content("/ManageUser/Index")">Manage Users</a></li>
+                <li class="active"><a href="#@ViewBag.tab1">Manage Certificates</a></li>
                 <li class=""><a href="@Url.Content("/ManageCal/Index")">Manage Calender</a></li>
-                @*<li class=""><a href="#tab4">Domain Names</a></li>*@
 
             </ul><!-- /# end tab links -->
             <div class="tab-container">
@@ -51,7 +50,7 @@
                     @*<div class="clearfix divider_line8"></div>*@
                     <div class="one_full">
 
-                        <h2><strong>Add New</strong> User</h2>
+                        <h2><strong>Add New</strong> Certificate</h2>
 
                         <div class="success">
 
@@ -72,26 +71,21 @@
 
                             <fieldset>
 
-                                <label for="name" class="blocklabel">Name/ Company Name*</label>
-                                <p class="">@Html.TextBoxFor(m => m.Name, new { @class = "input_bg" })</p>
+                                <label for="name" class="blocklabel">Certificate Name*</label>
+                                <p class="">@Html.TextBoxFor(m => m.name, new { @class = "input_bg" })</p>
 
 
 
-                                <label for="email" class="blocklabel">Username*</label>
-                                <p class="">@Html.TextBoxFor(m => m.UserName, new { @class = "input_bg" })</p>
+                                <label for="email" class="blocklabel">Type*</label>
+                                <p class="">@Html.TextBoxFor(m => m.typeid, new { @class = "input_bg" })</p>
 
 
-                                <label for="website" class="blocklabel">Password*</label>
-                                <p>@Html.PasswordFor(m => m.Password, new { @class = "input_bg" })</p>
+                                <label for="website" class="blocklabel">Assinged To*</label>
+                                <p>@Html.TextBoxFor(m => m.assigneeid, new { @class = "input_bg" })</p>
 
-                                <label for="website" class="blocklabel">Confirm Password*</label>
-                                <p>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input_bg" })</p>
+                                <label for="website" class="blocklabel">File*</label>
+                                <p>@Html.TextBoxFor(m => m.urlname, new { @class = "input_bg" })</p>
 
-                                <label for="message" class="blocklabel">Email*</label>
-                                <p>@Html.TextBoxFor(m => m.Email, new { @class = "input_bg" })</p>
-
-                                <label for="message" class="blocklabel">Contact No*</label>
-                                <p>@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "input_bg" })</p>
 
                                 @*<p>@Html.Captcha(4)</p>*@
 
@@ -102,7 +96,7 @@
                                     <br />
 
                                     <input name="Send" type="submit" value="ADD USER" class="comment_submit" />
-                                    <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageUser/'" />
+                                    <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageCert/'" />
                                 </p>
 
 
