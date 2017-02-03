@@ -158,6 +158,10 @@ namespace SafeMode.Controllers
         // [ValidateAntiForgeryToken]
         public async Task<ActionResult> RegisterUser(RegisterViewModel model)
         {
+            if (db.AspNetUsers.Where(x => x.Name == model.Name).Any())
+            {
+                ModelState.AddModelError("Name","Name/ Company Name already exists");
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName };

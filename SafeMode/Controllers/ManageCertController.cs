@@ -37,7 +37,19 @@ namespace SafeMode.Controllers
 
         public ActionResult Add()
         {
+            var certTypes = db.CertTypes;
+            ViewBag.typeid = new SelectList(certTypes , "id", "name");
             return View();
+        }
+
+        public ActionResult AutocompleteCompanyName(string term)
+        {
+            var items = db.AspNetUsers.Where(x => x.AspNetRoles.FirstOrDefault().Id == "2" && x.Name.Contains(term)).Select(x => x.Name).ToList();
+
+            //var filteredItems = items.Where(
+            //    item => item.IndexOf(term, StringComparison.InvariantCultureIgnoreCase) >= 0
+            //    );
+            return Json(items.Take(10), JsonRequestBehavior.AllowGet);
         }
     }
 }

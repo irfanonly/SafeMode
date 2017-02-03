@@ -10,6 +10,21 @@
 }
 
 <link href="~/Content/myStyle.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script>
+    $(document).ready(function () { 
+        $('*[data-autocomplete-url]') 
+            .each(function () { 
+                $(this).autocomplete({ 
+                    source: $(this).data("autocomplete-url") 
+                }); 
+            }); 
+    });
+</script>
+
+
+
 <div class="page_title">
     <div class="container">
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -77,11 +92,11 @@
 
 
                                 <label for="email" class="blocklabel">Type*</label>
-                                <p class="">@Html.TextBoxFor(m => m.typeid, new { @class = "input_bg" })</p>
+                                <p class="">@Html.DropDownListFor(m => m.typeid,null,"-Select-", new { @class = "input_bg" })</p>
 
 
                                 <label for="website" class="blocklabel">Assinged To*</label>
-                                <p>@Html.TextBoxFor(m => m.assigneeid, new { @class = "input_bg" })</p>
+                                <p>@Html.TextBoxFor(m => m.assigneeid, new { @class = "input_bg", data_autocomplete_url = Url.Action("/AutocompleteCompanyName") })</p>
 
                                 <label for="website" class="blocklabel">File*</label>
                                 <p>@Html.TextBoxFor(m => m.urlname, new { @class = "input_bg" })</p>

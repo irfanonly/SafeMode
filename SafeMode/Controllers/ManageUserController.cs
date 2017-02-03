@@ -91,6 +91,10 @@ namespace SafeMode.Controllers
         [HttpPost]
         public ActionResult Edit(UserEditVM userEditVM) {
 
+            if (db.AspNetUsers.Where(x => x.Name == userEditVM.Name && x.Id != userEditVM.Id).Any())
+            {
+                ModelState.AddModelError("Name", "Name/ Company Name already exists");
+            }
             if (ModelState.IsValid)
             {
                 var user = db.AspNetUsers.Find(userEditVM.Id);
