@@ -102,7 +102,7 @@
                                             <td>@cert.AspNetUser.Name</td>
                                             <td>@cert.AspNetUser.PhoneNumber</td>
                                             <td>@cert.AspNetUser.Email</td>
-                                            <td>@cert.uploadedon</td>
+                                            <td>@cert.uploadedon.ToString("MM/dd/yyyy")</td>
                                             <td>@Html.ActionLink("Edit", "Edit", new { id = cert.id })</td>
                                         </tr>
                                     }

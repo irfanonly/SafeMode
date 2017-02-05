@@ -155,6 +155,19 @@ namespace SafeMode.Controllers
                     ModelState.AddModelError("file", "file should be less than 4MB");
                 }
             }
+
+            if (model.assigneeid != null)
+            {
+                var assignee = db.AspNetUsers.Where(x => x.Name == model.assigneeid);
+                if (!assignee.Any())
+                {
+                    ModelState.AddModelError("assigneeid", "please select the assignee from the list");
+                }
+                else
+                {
+                    model.assigneeid = assignee.FirstOrDefault().Id;
+                }
+            }
             if (ModelState.IsValid)
             {
                 var cert = db.Certificates.Find(model.id);

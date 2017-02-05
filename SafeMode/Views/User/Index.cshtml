@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model IQueryable<SafeMode.Certificate>
 @{
     ViewBag.Title = "Index";
     ViewBag.CertVer = "active";
@@ -11,7 +12,7 @@
 @Html.AntiForgeryToken()
 
 
-    <div class="title"><h1>Welcome @User.Identity.GetUserName()!  <small>(<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>)</small></h1></div>
+    <div class="title"><h1>Welcome @User.Identity.GetUserName()!  <small>(<a style="text-align:right;" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>)</small></h1></div>
     <div class="pagenation">&nbsp;@Html.ActionLink("Home", "Index", "Home") <i>/</i> Certificate Verification</div>
     @*<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>*@
 
@@ -38,14 +39,29 @@
 
             <div class="accrodation">
 
-                <h2>You Have <i># Certificates</i></h2>
+                <h2>You Have <i>@Model.Count() Certificates</i></h2>
                 <div><h5>Browse certificate here</h5></div>
 
                 <!-- section 1 -->
                 <span class="acc-trigger active"><a href="#">Indivitual certificates</a></span>
                 <div class="acc-container">
                     <div class="content">
-                        There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form, by injected humour, or randomised words which looks Aenean tempus nunc sitamet nulla aliquet volutpat curabitur semper aliquam lorem eu euismod accumsan  accumsan mollis elementum sem ultrices egestas.
+                        @{ 
+                            var indCert = Model.Where(x => x.CertType.name == "Individual");
+                        }
+                        <ul>
+                            @foreach (var cert in indCert)
+                            {
+                                <li><a target="_blank" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
+                            }
+
+                            @if (indCert.Count() == 0)
+                            {
+                                <li>No Indivitual type certificate found</li>
+                            }
+
+                        </ul>
+                        @*There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form, by injected humour, or randomised words which looks Aenean tempus nunc sitamet nulla aliquet volutpat curabitur semper aliquam lorem eu euismod accumsan  accumsan mollis elementum sem ultrices egestas.*@
                     </div>
                 </div>
 
@@ -53,7 +69,22 @@
                 <span class="acc-trigger"><a href="#">Equipment certificates</a></span>
                 <div class="acc-container">
                     <div class="content">
-                        There are many variations of but the majority have suffered alteration in some form, by injected humour, or randomised words which looks. Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.  Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.
+                        @{
+                            var equCert = Model.Where(x => x.CertType.name == "Equipment");
+                        }
+                        <ul>
+                            @foreach (var cert in equCert)
+                            {
+                                <li><a target="_blank" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
+                            }
+
+                            @if (equCert.Count() == 0)
+                            {
+                                <li>No Equipment type certificate found</li>
+                            }
+
+                        </ul>
+                        @*There are many variations of but the majority have suffered alteration in some form, by injected humour, or randomised words which looks. Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.  Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.*@
                     </div>
                 </div>
 
@@ -61,7 +92,22 @@
                 <span class="acc-trigger"><a href="#">Other certificates</a></span>
                 <div class="acc-container">
                     <div class="content">
-                        There are many variations of but the majority have suffered alteration in some form, by injected humour, or randomised words which looks. Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.  Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.
+                        @{
+                            var otherCert = Model.Where(x => x.CertType.name == "Other");
+                        }
+                        <ul>
+                            @foreach (var cert in otherCert)
+                            {
+                                <li><a target="_blank" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
+                            }
+
+                            @if (otherCert.Count() == 0)
+                            {
+                                <li>No Other type certificate found</li>
+                            }
+
+                        </ul>
+                        @*There are many variations of but the majority have suffered alteration in some form, by injected humour, or randomised words which looks. Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.  Lorem Ipsum is simply dummy text of the printing and typesetting indust been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.*@
                     </div>
                 </div>
 
