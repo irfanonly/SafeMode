@@ -48,7 +48,7 @@ namespace SafeMode.Controllers
         [HttpPost]
         public ActionResult Add(CertficateCreateModel model)
         {
-            string assineeId = null;
+           
             if(model.file != null)
             {
                 var ext = Path.GetExtension(model.file.FileName);
@@ -103,6 +103,98 @@ namespace SafeMode.Controllers
 
                 return RedirectToAction("Index");
             }
+
+            var certTypes = db.CertTypes;
+            ViewBag.typeid = new SelectList(certTypes, "id", "name");
+            return View(model);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            
+            CertficateEditModel certficateEditModel = new CertficateEditModel();
+
+            var cert = db.Certificates.Find(id);
+
+            if (cert == null)
+            {
+                return Content("Bad Request");
+            }
+
+            certficateEditModel.id = cert.id;
+            certficateEditModel.name = cert.name;
+            certficateEditModel.urlname = cert.urlname;
+            certficateEditModel.typeid = cert.typeid;
+            certficateEditModel.assigneeid = cert.AspNetUser.Name;
+
+
+            var certTypes = db.CertTypes;
+            ViewBag.typeid = new SelectList(certTypes, "id", "name");
+            return View(certficateEditModel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CertficateEditModel model)
+        {
+            if (model.file != null)
+            {
+                var ext = Path.GetExtension(model.file.FileName);
+
+                if (ext != ".pdf")
+                {
+                    ModelState.AddModelError("file", "please upload pdf format file");
+                }
+
+                if (model.file.FileName.Length > 45)
+                {
+                    ModelState.AddModelError("file", "please minimize file name");
+                }
+
+                if (model.file.ContentLength > (4 * 1024 * 1024))
+                {
+                    ModelState.AddModelError("file", "file should be less than 4MB");
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                var cert = db.Certificates.Find(model.id);
+
+                if (cert == null)
+                {
+                    return Content("Bad Request");
+                }
+
+                if(model.file != null)
+                {
+                    var dir = new DirectoryInfo(Server.MapPath("~/images/certificates/"));
+                        foreach (var file in dir.EnumerateFiles(model.id + "_" + "*"))
+                        {
+                            string fullPath = Request.MapPath("~/images/certificates/" + file.Name);
+                            if (System.IO.File.Exists(fullPath))
+                            {
+                                System.IO.File.Delete(fullPath);
+                            }
+                            // file.Delete();
+                        }
+
+                    model.file.SaveAs(Server.MapPath("~/images/certificates/" + model.id + "_" + model.file.FileName));
+                    cert.urlname = model.file.FileName;
+                }
+                
+                cert.name = model.name;
+                cert.assigneeid = model.assigneeid;
+                cert.typeid = model.typeid;
+                cert.uploadedby = User.Identity.Name;
+                cert.uploadedon = Times.getQatarTime();
+                
+               
+                db.SaveChanges();
+
+                TempData["Succuss"] = "Successfully certificate updated";
+
+                return RedirectToAction("Index");
+            }
+
 
             var certTypes = db.CertTypes;
             ViewBag.typeid = new SelectList(certTypes, "id", "name");

@@ -1,0 +1,144 @@
+﻿@using Microsoft.AspNet.Identity
+@model SafeMode.Models.CertficateEditModel
+    ViewBag.Title = "Edit";
+}
+@{
+    ViewBag.Admin = "active";
+    ViewBag.tab1 = "tab1";
+    ViewBag.CertVer = "active";
+}
+<link href="~/Content/myStyle.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('*[data-autocomplete-url]')
+            .each(function () {
+                $(this).autocomplete({
+                    source: $(this).data("autocomplete-url")
+
+
+                });
+            });
+    });
+</script>
+
+<div class="page_title">
+    <div class="container">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="title"><h1>Welcome @User.Identity.GetUserName()!  <small>(<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>)</small></h1></div>
+            <div class="pagenation">&nbsp;@Html.ActionLink("Home", "Index", "Home") <i>/</i> Certificate Verification</div>
+            @*<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>*@
+
+        }
+
+    </div>
+</div><!-- end page title -->
+<!-- Contant
+======================================= -->
+
+<div class="container">
+
+    <div class="content_fullwidth">
+
+        @*<h2><strong>Tab</strong> Style One</h2>*@
+
+        <div id="tabs">
+
+          
+            <div class="tab-container">
+
+                <div id="@ViewBag.tab1" class="tab-content">
+
+                    @*<div class="clearfix divider_line8"></div>*@
+                    <div class="one_full">
+
+                        <h2><strong>Add New</strong> Certificate</h2>
+
+                        <div class="success">
+
+                            @ViewBag.SuccessMsg
+                        </div>
+
+                        <div class="error">
+
+                            @ViewBag.ErrorMsg
+                        </div>
+                        @using (Html.BeginForm("Edit", "ManageCert", null @*new { ReturnUrl = ViewBag.ReturnUrl }*@, FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            //if (ViewBag.Error == "True")
+                            //{
+                            @Html.ValidationSummary(false, "", new { @class = "error" })
+                            @*}*@
+
+                            <fieldset>
+
+                                <label for="name" class="blocklabel">Certificate Name*</label>
+                                <p class="">@Html.TextBoxFor(m => m.name, new { @class = "input_bg" })</p>
+
+
+
+                                <label for="email" class="blocklabel">Type*</label>
+                                <p class="">@Html.DropDownListFor(m => m.typeid, null, "-Select-", new { @class = "input_bg" })</p>
+
+
+                                <label for="website" class="blocklabel">Assinged To*</label>
+                                <p>@Html.TextBoxFor(m => m.assigneeid, new { @class = "input_bg", data_autocomplete_url = Url.Action("/AutocompleteCompanyName") })</p>
+
+                                @*<p>@Html.HiddenFor(m => m.assigneeid, new { @class = "input_bg", data_autocomplete_url = Url.Action("/AutocompleteCompanyName") })</p>*@
+
+                                <label for="website" class="blocklabel">File : <a target="_blank" href="~/images/certificates/@(Model.id)_@Model.urlname">@Model.urlname</a></label>
+                                
+                                
+                                <p>@Html.TextBoxFor(m => m.file, new { @class = "input_bg", type = "file" })</p>
+
+
+                                @*<p>@Html.Captcha(4)</p>*@
+
+
+                                <p>
+
+                                    <div class="clearfix"></div>
+                                    <br />
+
+                                    <input name="Send" type="submit" value="UPDATE" class="comment_submit" />
+                                    <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageCert/'" />
+                                </p>
+
+
+
+
+                                @*<?php } else { ?>
+
+
+
+                                    <?php } ?>*@
+
+                            </fieldset>
+                        }
+
+
+
+
+                    </div>
+
+
+                </div><!-- end tab single section -->
+
+
+            </div>
+
+        </div><!-- end tab -->
+
+        <div class="clearfix divider_line5"></div>
+
+
+    </div>
+
+</div><!-- end content area -->
