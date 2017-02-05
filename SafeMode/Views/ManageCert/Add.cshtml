@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model SafeMode.Certificate
+@model SafeMode.Models.CertficateCreateModel
 @{
     ViewBag.Admin = "active";
     ViewBag.tab1 = "tab1";
@@ -17,7 +17,9 @@
         $('*[data-autocomplete-url]') 
             .each(function () { 
                 $(this).autocomplete({ 
-                    source: $(this).data("autocomplete-url") 
+                    source: $(this).data("autocomplete-url")
+
+                    
                 }); 
             }); 
     });
@@ -76,7 +78,7 @@
 
                             @ViewBag.ErrorMsg
                         </div>
-                        @using (Html.BeginForm("RegisterUser", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        @using (Html.BeginForm("Add", "ManageCert", null @*new { ReturnUrl = ViewBag.ReturnUrl }*@, FormMethod.Post, new { role = "form" , enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             //if (ViewBag.Error == "True")
@@ -98,8 +100,10 @@
                                 <label for="website" class="blocklabel">Assinged To*</label>
                                 <p>@Html.TextBoxFor(m => m.assigneeid, new { @class = "input_bg", data_autocomplete_url = Url.Action("/AutocompleteCompanyName") })</p>
 
+                                @*<p>@Html.HiddenFor(m => m.assigneeid, new { @class = "input_bg", data_autocomplete_url = Url.Action("/AutocompleteCompanyName") })</p>*@
+
                                 <label for="website" class="blocklabel">File*</label>
-                                <p>@Html.TextBoxFor(m => m.urlname, new { @class = "input_bg" })</p>
+                                <p>@Html.TextBoxFor(m => m.file, new { @class = "input_bg", type="file" })</p>
 
 
                                 @*<p>@Html.Captcha(4)</p>*@
@@ -110,7 +114,7 @@
                                     <div class="clearfix"></div>
                                     <br />
 
-                                    <input name="Send" type="submit" value="ADD USER" class="comment_submit" />
+                                    <input name="Send" type="submit" value="ADD" class="comment_submit" />
                                     <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageCert/'" />
                                 </p>
 

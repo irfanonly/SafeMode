@@ -261,9 +261,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CertficateViewModels.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Times.cs" />
     <Compile Include="Models\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -487,6 +489,7 @@
     <Folder Include="css\font-awesome\" />
     <Folder Include="css\__history\" />
     <Folder Include="images\blog\" />
+    <Folder Include="images\certificates\" />
     <Folder Include="images\elements\" />
     <Folder Include="images\sliders\" />
     <Folder Include="js\accordion\" />

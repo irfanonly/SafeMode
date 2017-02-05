@@ -1,9 +1,12 @@
 ﻿using PagedList;
+using SafeMode.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace SafeMode.Controllers
 {
@@ -42,9 +45,73 @@ namespace SafeMode.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Add(CertficateCreateModel model)
+        {
+            string assineeId = null;
+            if(model.file != null)
+            {
+                var ext = Path.GetExtension(model.file.FileName);
+
+                if (ext != ".pdf")
+                {
+                    ModelState.AddModelError("file", "please upload pdf format file");
+                }
+
+                if (model.file.FileName.Length > 45)
+                {
+                    ModelState.AddModelError("file", "please minimize file name");
+                }
+
+                if (model.file.ContentLength > (4 * 1024 * 1024  ))
+                {
+                    ModelState.AddModelError("file", "file should be less than 4MB");
+                }
+            }
+
+            if (model.assigneeid != null)
+            {
+                var assignee = db.AspNetUsers.Where(x => x.Name == model.assigneeid);
+                if (!assignee.Any())
+                {
+                    ModelState.AddModelError("assigneeid", "please select the assignee from the list");
+                }
+                else
+                {
+                    model.assigneeid = assignee.FirstOrDefault().Id;
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                Certificate certificate = new Certificate();
+                certificate.name = model.name;
+                certificate.assigneeid = model.assigneeid;
+                certificate.typeid = model.typeid;
+                certificate.uploadedby = User.Identity.Name;
+                certificate.uploadedon = Times.getQatarTime();
+                certificate.urlname = model.file.FileName;
+
+                db.Certificates.Add(certificate);
+                db.SaveChanges();
+
+                var Cid = db.Certificates.Max(x=> x.id);
+
+                model.file.SaveAs(Server.MapPath("~/images/certificates/" + Cid + "_"+ model.file.FileName) );                                                                          
+
+
+                TempData["Succuss"] = "Successfully certificate created";
+
+                return RedirectToAction("Index");
+            }
+
+            var certTypes = db.CertTypes;
+            ViewBag.typeid = new SelectList(certTypes, "id", "name");
+            return View(model);
+        }
+
         public ActionResult AutocompleteCompanyName(string term)
         {
-            var items = db.AspNetUsers.Where(x => x.AspNetRoles.FirstOrDefault().Id == "2" && x.Name.Contains(term)).Select(x => x.Name).ToList();
+            var items = db.AspNetUsers.Where(x => x.AspNetRoles.FirstOrDefault().Id == "2" && x.Name.Contains(term)).Select(x =>  x.Name ).ToList();
 
             //var filteredItems = items.Where(
             //    item => item.IndexOf(term, StringComparison.InvariantCultureIgnoreCase) >= 0
