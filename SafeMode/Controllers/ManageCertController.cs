@@ -223,5 +223,37 @@ namespace SafeMode.Controllers
             //    );
             return Json(items.Take(10), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Delete(string id)
+        {
+            var idss = id.Split(',');
+
+            foreach (var i in idss)
+            {
+
+                var cert = db.Certificates.Find(Convert.ToInt32(i));
+                db.Certificates.Remove(cert);
+
+                var dir = new DirectoryInfo(Server.MapPath("~/images/certificates/"));
+                foreach (var file in dir.EnumerateFiles(id + "_" + "*"))
+                {
+                    string fullPath = Request.MapPath("~/images/certificates/" + file.Name);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        System.IO.File.Delete(fullPath);
+                    }
+                    // file.Delete();
+                }
+
+            }
+
+            db.SaveChanges();
+
+            TempData["Succuss"] = "Successfully certificate deleted";
+
+            return RedirectToAction("Index");
+
+
+        }
     }
 }

@@ -134,3 +134,56 @@
     </div>
 
 </div><!-- end content area -->
+
+<div class="overlay-bg"></div>
+
+<div class="overlay-content but_warning_sign popupDeleteMultiple" style="padding:0px;">
+
+
+
+    <div id="DeleteOneInfo" style="padding:7%;text-align:center">
+
+
+        <h3>
+            <i class="fa fa-warning" style="font-size:35px;padding:3px"></i>
+            Do you really want to delete <span id="course-count"></span> item/s?
+        </h3>
+
+        <div class="center">
+            @*<button type="button" id="delete-multiple" class="btn" value="" style="margin-right:4px">Delete</button>*@
+            @*<input type="button" class="btn close-btn" value="Cancel">*@
+            <a id="delete-multiple" class="but_ok_2"><i class="fa fa-check fa-lg"></i> Ok</a>
+            <a class="but_remove_2 close-btn"><i class="fa fa-times-circle fa-lg"></i> Cancel</a>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<script>
+
+    $('#delete-multiple').click(function () {
+
+        window.location.href = '/ManageCert/Delete/' + $(this).val();
+    });
+    $('#big-delete').click(function () {
+        if ($('input:checkbox:checked').length > 0) {
+            $('#course-count').text($('input:checkbox:checked').length);
+            showPopup('DeleteMultiple');
+            var array = [];
+            var ind = 0;
+            $('input:checkbox:checked').next('#id').each(function (e) {
+
+                array[ind] =   $(this).val();
+                ind++;
+
+            });
+            $('#delete-multiple').val(array.join(','));
+            //console.log(array.join(','));
+        }
+
+    });
+</script>
