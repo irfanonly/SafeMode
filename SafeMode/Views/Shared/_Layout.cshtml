@@ -272,9 +272,20 @@ $(".controlls li a").click(function(e) {
                                                 
                                                 @Html.ActionLink("Calendar", "Calendar", "Home", null, new { @class = ViewBag.Calendar })
                                             </li>
-                                            <li>@Html.ActionLink("Certificate Verification", "CertificateVerification", "Home", null, new { @class = ViewBag.CertVer })
+@if (Request.IsAuthenticated && User.IsInRole("admin"))
+{
+    <li>
+        @Html.ActionLink("Admin Panel", "CertificateVerification", "Home", null, new { @class = ViewBag.CertVer })
+    </li>
+}
+else {
+    <li>
+        @Html.ActionLink("Certificate Verification", "CertificateVerification", "Home", null, new { @class = ViewBag.CertVer })
+    </li>
 
-                                            <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = ViewBag.Contact })</li>
+}
+
+<li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = ViewBag.Contact })</li>
 
                                         </ul>
 
