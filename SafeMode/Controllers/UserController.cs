@@ -22,5 +22,10 @@ namespace SafeMode.Controllers
             var certi = db.Certificates.Where(x => x.assigneeid == userId);
             return View(certi);
         }
+
+        public ActionResult Empty()
+        {
+            return View();
+        }
     }
 }

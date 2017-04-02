@@ -52,7 +52,7 @@
                         <ul>
                             @foreach (var cert in indCert)
                             {
-                                <li><a target="_blank" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
+                                <li><a href="~/ViewerJS/#../images/certificates/@(cert.id)_@cert.urlname" target="frame">@cert.name</a></li>
                             }
 
                             @if (indCert.Count() == 0)
@@ -75,7 +75,7 @@
                         <ul>
                             @foreach (var cert in equCert)
                             {
-                                <li><a target="_blank" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
+                                <li><a target="frame" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
                             }
 
                             @if (equCert.Count() == 0)
@@ -98,7 +98,7 @@
                         <ul>
                             @foreach (var cert in otherCert)
                             {
-                                <li><a target="_blank" href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
+                                <li><a target="frame"  href="~/images/certificates/@(cert.id)_@cert.urlname">@cert.name</a></li>
                             }
 
                             @if (otherCert.Count() == 0)
@@ -134,7 +134,13 @@
 
         <div class="clearfix mar_top2"></div>
 
-        <a href="#" class="but_download"><i class="fa fa-download fa-lg"></i> Download</a>
+    @{ 
+        var cert2 = indCert.FirstOrDefault();
+    }
+
+        <iframe id="frame" name="frame" src="/User/Empty" width='600' height='400' allowfullscreen webkitallowfullscreen></iframe>
+
+        @*<a href="#" class="but_download"><i class="fa fa-download fa-lg"></i> Download</a>*@
         <!-- end more features section -->
 
 
