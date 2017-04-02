@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model SafeMode.Models.ProfileVM
 @{
     ViewBag.Title = "Index";
     ViewBag.Admin = "active";
@@ -86,38 +87,71 @@
             <div class="tab-container">
 
                 <div id="@ViewBag.tab1" class="tab-content">
-                    <img src="images/blog/site-img05.jpg" class="image_left1" alt="" />
-                    <h4>Web Hosting</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscursus felis vel lacus cursus ullamcorper. Maecenas sed enim neque, quis rutrum arcu. Meceasa justo enim. Suspendisse suscipit malesuada magna, at sagittis augue varius ut. Donec vitae libero magna. Duis at ipsum ac mi tempor pulvinar.</p>
-                    <br />
-                    <p>Pelltesque blandit suscipit molestie. Phasellus porta lorem ac ipsum cursus congue. Ut lobortis pellentesque nare. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, in ornare dolor facilisis in. Aliquam aeque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, in ornare dolor facilisis in. Aliquam a neque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula, velit lectus hendrerit lorem, eu rutrum velit mi vitae augue. Mauris congue, leo nec ullamcorper vestibulum, orci augue tristique mi, eget bibendum mauris turpis sed metus. Vestibulum quam risu volutpat quis aliquam eu, dictum id massa.</p>
+                    <div class="one_full">
 
-                    <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non words etc.</p>
-                </div><!-- end tab single section -->
-                @*<div id="tab2" class="tab-content">
-                        <h4>Reseller Hosting</h4>
-                        <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscursus felis</strong> vel lacus cursus ullamcorper. Maecenas sed enim neque, quis rutrum arcu. Meceasa justo enim. Suspendisse suscipit malesuada magna, at sagittis augue varius ut. Donec vitae libero magna. Duis at ipsum ac mi tempor pulvinar. Vimus ut tincdunt assa. Quisque pulvinar neque eu lorem tincidunt imperdiet porta mauris molesie. Pelltesque blandit suscipit molestie. Phasellus porta lorc ipsum cursus conguet lobortis pellentesque ornare aliquet condimentum.</p>
+                        <h2><strong>My</strong> Proflie</h2>
 
-                        <p>Pelltesque blandit suscipit molestie. Phasellus porta lorem ac ipsum cursus congue. Ut lobortis pellentesque nare. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, in ornare dolor facilisis in. Aliquam aeque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, <strong>in ornare dolor facilisis</strong> in. Aliquam a neque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula, velit lectus hendrerit lorem, eu rutrum velit mi vitae augue. Mauris congue, leo nec ullamcorper vestibulum, orci augue tristique mi, eget bibendum mauris turpis sed metus. Vestibulum quam risu volutpat quis aliquam eu, dictum id massa.</p>
+                        <div class="success">
 
-                        <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-                    </div>*@<!-- end tab single section -->
-                @*<div id="tab3" class="tab-content">
-                        <img src="images/blog/site-img09.jpg" class="image_left1" alt="" /><h4>VPS Hosting</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscursus felis vel lacus cursus ullamcorper. Maecenas sed enim neque, quis rutrum arcu. Meceasa justo enim. Suspendisse suscipit malesuada magna, at sagittis augue varius ut. Donec vitae libero magna. Duis at ipsum ac mi tempor pulvinar. Vimus ut tincdunt assa. Quisque pulvinar neque eu lorem tincidunt imperdiet porta mauris molesie. Pelltesque blandit suscipit molestie. Phasellus porta lorc ipsum cursus conguet lobortis pellentesque ornare aliquet condimentum.</p>
+                            @ViewBag.SuccessMsg
+                        </div>
 
-                        <p>Pelltesque blandit suscipit molestie. Phasellus porta lorem ac ipsum cursus congue. Ut lobortis pellentesque nare. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, in ornare dolor facilisis in. Aliquam aeque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, in ornare dolor facilisis in. Aliquam a neque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula, velit lectus hendrerit lorem, eu rutrum velit mi vitae augue. Mauris congue, leo nec ullamcorper vestibulum, orci augue tristique mi, eget bibendum mauris turpis sed metus. Vestibulum quam risu volutpat quis aliquam eu, dictum id massa.</p>
+                        <div class="error">
 
-                        <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-                    </div>*@<!-- end tab single section -->
-                @*<div id="tab4" class="tab-content">
-                        <img src="images/blog/site-img04.jpg" class="image_left1" alt="" /><h4>Domain Names</h4>
-                        <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscursus felis</strong> vel lacus cursus ullamcorper. Maecenas sed enim neque, quis rutrum arcu. Meceasa justo enim. Suspendisse suscipit malesuada magna, at sagittis augue varius ut. Donec vitae libero magna. Duis at ipsum ac mi tempor pulvinar. Vimus ut tincdunt assa. Quisque pulvinar neque eu lorem tincidunt imperdiet porta mauris molesie. Pelltesque blandit suscipit molestie. Phasellus porta lorc ipsum cursus conguet lobortis pellentesque ornare aliquet condimentum.</p>
+                            @ViewBag.ErrorMsg
+                        </div>
+                        @using (Html.BeginForm("Profile", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            //if (ViewBag.Error == "True")
+                            //{
+                            @Html.ValidationSummary(false, "", new { @class = "error" })
+                            @*}*@
 
-                        <p>Pelltesque blandit suscipit molestie. Phasellus porta lorem ac ipsum cursus congue. Ut lobortis pellentesque nare. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, in ornare dolor facilisis in. Aliquam aeque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula. Pellentesque tincidunt aliquet condimentum. Nunc rhoncus porta erat, <strong>in ornare dolor facilisis</strong> in. Aliquam a neque nulla, vitae convallis mauris. Duis tristique, lectus sit amet pharetra vehicula, velit lectus hendrerit lorem, eu rutrum velit mi vitae augue. Mauris congue, leo nec ullamcorper vestibulum, orci augue tristique mi, eget bibendum mauris turpis sed metus. Vestibulum quam risu volutpat quis aliquam eu, dictum id massa.</p>
+                            <fieldset>
 
-                        <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-                    </div>*@<!-- end tab single section -->
+                                <label for="email" class="blocklabel">Username*  </label>
+                                <p class="">@Html.TextBoxFor(m => m.UserName, new { @class = "input_bg" })</p>
+
+                                @Html.HiddenFor(m => m.Id)
+
+                                <label for="email" class="blocklabel">Current Password*  </label>
+                                <p class="">@Html.TextBoxFor(m => m.CurrentPassword, new { @class = "input_bg" })</p>
+
+                                <label for="email" class="blocklabel"> &ensp; </label>
+                                <p class="">@Html.CheckBoxFor(m => m.ChangePassword, new { @class = "input_bg" }) <label class="blocklabel" style="width: 60%;margin: 1px;">Change Password</label> </p>
+                                
+
+                                <label for="name" class="blocklabel">Password*</label>
+                                <p class="">@Html.PasswordFor(m => m.Password, new { @class = "input_bg" })</p>
+
+                                <label for="message" class="blocklabel">Confirm password*</label>
+                                <p>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input_bg" })</p>
+
+
+                                @*<p>@Html.Captcha(4)</p>*@
+
+
+                                <p>
+
+                                    <div class="clearfix"></div>
+                                    <br />
+
+                                    <input name="Send" type="submit" value="UPDATE PROFILE" class="comment_submit" />
+                                    <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageUser/'" />
+
+                                </p>
+
+
+                            </fieldset>
+                        }
+
+
+
+
+                    </div>
+                 </div><!-- end tab single section -->
+               
 
             </div>
 
