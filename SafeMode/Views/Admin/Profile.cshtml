@@ -7,6 +7,9 @@
 }
 
 <style>
+    input:disabled{
+        background-color: rgb(235, 235, 228);
+    }
     ul.tabs2 {
         margin: 0;
         padding: 0;
@@ -50,6 +53,30 @@
         border-right: 1px solid #eee;
     }
 </style>
+<script>
+    $(document).ready(function () {
+        EnableDisablePasswordFields();
+
+        $('#ChangePassword').change(function () {
+
+            EnableDisablePasswordFields();
+        });
+
+
+    });
+
+    
+    function EnableDisablePasswordFields(){
+        if ($('#ChangePassword').prop("checked") == false) {
+            $("#Password").prop('disabled', true);
+            $("#ConfirmPassword").prop('disabled', true);
+
+        } else {
+            $("#Password").prop('disabled', false);
+            $("#ConfirmPassword").prop('disabled', false);
+        }
+    }
+</script>
 
 <div class="page_title">
     <div class="container">
@@ -89,7 +116,7 @@
                 <div id="@ViewBag.tab1" class="tab-content">
                     <div class="one_full">
 
-                        <h2><strong>My</strong> Proflie</h2>
+                        <h2><strong>My</strong> Profile</h2>
 
                         <div class="success">
 
@@ -122,10 +149,10 @@
                                 <p class="">@Html.CheckBoxFor(m => m.ChangePassword, new { @class = "input_bg" }) <label class="blocklabel" style="width: 60%;margin: 1px;">Change Password</label> </p>
                                 
 
-                                <label for="name" class="blocklabel">Password*</label>
+                                <label for="name" class="blocklabel">Password</label>
                                 <p class="">@Html.PasswordFor(m => m.Password, new { @class = "input_bg" })</p>
 
-                                <label for="message" class="blocklabel">Confirm password*</label>
+                                <label for="message" class="blocklabel">Confirm password</label>
                                 <p>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input_bg" })</p>
 
 
@@ -138,7 +165,7 @@
                                     <br />
 
                                     <input name="Send" type="submit" value="UPDATE PROFILE" class="comment_submit" />
-                                    <input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageUser/'" />
+                                    @*<input name="Send" type="button" value="CANCEL" class="comment_submit" onclick="window.location.href = '/ManageUser/'" />*@
 
                                 </p>
 

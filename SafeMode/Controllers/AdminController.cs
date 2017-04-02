@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SafeMode.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,17 @@ namespace SafeMode.Controllers
         public ActionResult Profile()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Profile(ProfileVM model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View(model);
         }
     }
 }
