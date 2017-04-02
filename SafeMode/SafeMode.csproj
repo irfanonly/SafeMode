@@ -505,6 +505,7 @@
     <Content Include="Views\ManageCert\Add.cshtml" />
     <Content Include="Views\ManageCert\Edit.cshtml" />
     <Content Include="Views\User\Empty.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

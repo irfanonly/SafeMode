@@ -14,5 +14,10 @@ namespace SafeMode.Controllers
         {
             return RedirectToAction("Index","ManageUser");
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
     }
 }
